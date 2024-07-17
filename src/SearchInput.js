@@ -19,13 +19,15 @@ class SearchInput extends Component {
 
     return (
       <>
-        <input
-          className="Search-input"
-          type="text"
-          placeholder="Search Task..."
-          value={filter}
-          onChange={this.handleInputChange}
-        />
+        <div className="Input">
+          <input
+            className="Search-input"
+            type="text"
+            placeholder="Search Task..."
+            value={filter}
+            onChange={this.handleInputChange}
+          />
+        </div>
       </>
     );
   }
