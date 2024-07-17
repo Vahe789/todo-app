@@ -1,6 +1,5 @@
-
 body {
-  background-color: black;
+  background-color: blueviolet;
 }
 
 .todo-list {
@@ -109,4 +108,12 @@ input[type="checkbox"]::before {
   padding: 8px 12px;
   font-size: 22px;
   margin-left: 6px;
+}
+
+.Input {
+  margin: 10px;
+}
+
+.Search-input {
+  margin-right: 155px;
 }
