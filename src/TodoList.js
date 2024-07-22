@@ -3,13 +3,27 @@ import TodoItem from "./TodoItem";
 
 class TodoList extends React.Component {
   render() {
-    const { todos, onDelete } = this.props;
+    const { todos, onDelete, onToggleStatus } = this.props;
+    const { filtering } = this.props;
+
+    let filteredTodos = todos;
+
+    if (filtering === "completed") {
+      filteredTodos = todos.filter((todo) => todo.done);
+    } else if (filtering === "Not Completed") {
+      filteredTodos = todos.filter((todo) => !todo.done);
+    }
 
     return (
       <div className="task-div">
-        {todos.map((todo) => (
+        {filteredTodos.map((todo) => (
           <div className="item-div">
-            <TodoItem key={todo.id} todo={todo} onDelete={onDelete} />
+            <TodoItem
+              key={todo.id}
+              todo={todo}
+              onDelete={onDelete}
+              onToggleStatus={onToggleStatus}
+            />
           </div>
         ))}
       </div>
