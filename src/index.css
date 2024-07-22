@@ -1,5 +1,5 @@
 body {
-  background-color: blueviolet;
+  background-color: rgba(36, 128, 0, 0.589);
 }
 
 .todo-list {
@@ -10,7 +10,7 @@ body {
 
 h1 {
   font-size: 64px;
-  color: white;
+  color: green;
 }
 
 button {
@@ -116,4 +116,38 @@ input[type="checkbox"]::before {
 
 .Search-input {
   margin-right: 155px;
+}
+
+.Undone-button {
+  color: red;
+  cursor: pointer;
+  transition: background-color 0.5s ease;
+}
+
+.Done-button {
+  color: green;
+  cursor: pointer;
+  transition: background-color 0.5s ease;
+}
+
+
+.Filtering-buttons {
+ margin: 12px;
+}
+
+.All-button {
+  color: white;
+  background-color: green;
+}
+
+.Completed-button {
+  margin-left: 14px;
+  color: white;
+  background-color: green;
+}
+
+.Not-completed-button {
+  margin-left: 14px;
+  color: white;
+  background-color: green;
 }
