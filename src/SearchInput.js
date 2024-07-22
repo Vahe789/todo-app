@@ -5,6 +5,7 @@ class SearchInput extends Component {
     super(...props);
     this.state = {
       filter: "",
+      filteredApps: [],
     };
   }
 
@@ -15,7 +16,7 @@ class SearchInput extends Component {
   };
 
   render() {
-    const { filter } = this.state;
+    const { filter } = this.props;
 
     return (
       <>
