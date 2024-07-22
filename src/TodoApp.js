@@ -13,12 +13,29 @@ class TodoApp extends React.Component {
         { id: 3, text: "Study every day", completed: false },
         { id: 4, text: "Meeting with Boss", completed: true },
       ],
+      filtering: "all",
       filter: "",
+      filteredApps: [],
     };
   }
 
+  componentDidMount() {
+    this.setState({ filteredTodos: this.state.todos });
+  }
+
+  handleToggleStatus = (id, done) => {
+    const updatedTodos = this.state.todos.map((todo) =>
+      todo.id === id ? { ...todo, done } : todo
+    );
+    this.setState({ todos: updatedTodos });
+  };
+
   handleFilterChange = (filter) => {
     this.setState({ filter });
+  };
+
+  handleFilteringChange = (filtering) => {
+    this.setState({ filtering });
   };
 
   handleAddTodo = (text) => {
@@ -38,7 +55,7 @@ class TodoApp extends React.Component {
   };
 
   render() {
-    const { todos, filter } = this.state;
+    const { filtering, todos, filter, filteredApps } = this.state;
 
     const filteredTodos = todos.filter((todo) =>
       todo.text.toLowerCase().includes(filter.toLowerCase())
@@ -48,8 +65,38 @@ class TodoApp extends React.Component {
       <div className="todo-list">
         <h1>Todo App</h1>
         <TodoForm onAdd={this.handleAddTodo} />
-        <SearchInput onFilterChange={this.handleFilterChange} />
-        <TodoList todos={filteredTodos} onDelete={this.handleDeleteTodo} />
+        <SearchInput
+          onFilterChange={this.handleFilterChange}
+          todos={filteredApps}
+        />
+        <div className="Filtering-buttons">
+          <button
+            className="All-button"
+            onClick={() => this.handleFilteringChange("all")}
+          >
+            All
+          </button>
+          <button
+            className="Completed-button"
+            onClick={() => this.handleFilteringChange("completed")}
+          >
+            Completed
+          </button>
+          <button
+            className="Not-completed-button"
+            onClick={() => this.handleFilteringChange("Not Completed")}
+          >
+            Not Completed
+          </button>
+        </div>
+
+        <TodoList
+          todos={filteredTodos}
+          onDelete={this.handleDeleteTodo}
+          onToggleStatus={this.handleToggleStatus}
+          onFilteringChange={this.handleFilteringChange}
+          filtering={filtering}
+        />
       </div>
     );
   }
